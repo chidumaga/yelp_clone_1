@@ -6,6 +6,8 @@
     <%= link_to "Edit #{restaurant.name}", edit_restaurant_path(restaurant) %>
     <%= link_to "Delete #{restaurant.name}", restaurant_path(restaurant), method: :delete %>
      <%= link_to "Review #{restaurant.name}", new_restaurant_review_path(restaurant) %>
+
+     Average rating: <%= star_rating(restaurant.average_rating) %>
      <h3>Reviews for <%= restaurant.name %></h3>
 
     <% if restaurant.reviews.any? %>
@@ -13,6 +15,7 @@
         <% restaurant.reviews.each do |review| %>
           <li>
             <%= review.thoughts %>, <strong><%= review.rating %></strong>/5
+            <%= @user_email%>
           </li>
         <% end %>
       </ul>
